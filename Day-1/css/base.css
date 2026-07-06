@@ -1,0 +1,61 @@
+:root {
+    --color-primary: purple;
+    --color-primary-rgb: rgb(128 0 128);
+    --color-primary-hsl: hsl(300deg 100% 25%);
+    --color-primary-hex: #800080;
+    --color-primary-oklch: oklch(42.09% 0.1935 328.352deg);
+    --color-header: blanchedalmond;
+    --color-secondary: blue;
+    --color-accent: yellow;
+    --color-success: green;
+    --color-warning: orange;
+    --color-error: red;
+    --color-text: black;
+    --color-bg: rgb(255 255 255);
+    --color-purple-100: oklch(94.3% 0.029 294.588deg);
+    --color-purple-200: oklch(90.2% 0.063 306.703deg);
+    --color-purple-300: oklch(59.351% 0.1137 306.879deg);
+    --color-purple-400: oklch(74% 0.238 322.16deg);
+    --color-purple-500: oklch(66.7% 0.295 322.15deg);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root[data-theme="dark"] {
+    --color-text: rgb(255 255 255);
+    --color-bg: #000000;
+    --color-primary: blanchedalmond;
+    --color-secondary: orange;
+}
+
+h1 {
+    color: var(--color-primary);
+    font-size: clamp(2rem, 1.63rem + 1.82vw, 3.05rem);
+}
+
+h2 {
+    color: var(--color-secondary);
+    font-size: clamp(1.6rem, 1.35rem + 1.27vw, 2.44rem);
+}
+
+h3 {
+    color: var(--color-purple-400);
+    font-size: clamp(1.28rem, 1.11rem + 0.85vw, 1.95rem);
+}
+
+h4 {
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.56rem);
+}
+
+h5 {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+h6 {
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+}
