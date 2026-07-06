@@ -1,0 +1,49 @@
+@media screen and (width<=1350px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (width<=768px) {
+    figure img {
+        width: 270px;
+        height: 270px;
+    }
+}
+@media screen and (width<=768px) {
+    .homegrid,
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (width<=460px) {
+    .homegrid,
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (width<=320px) {
+    .homegrid,
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    main {
+        animation: fade 1s ease-in-out forwards;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
