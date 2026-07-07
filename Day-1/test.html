@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ResizeObserver Chart</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body,
+            html {
+                max-width: 100%;
+            }
+            .container {
+                border: 2px solid black;
+                width: 500px;
+                height: 500px;
+                padding: 20px;
+                resize: both;
+                overflow: auto;
+                background-color: #f9f9f9;
+            }
+            .graph {
+                border-bottom: 2px solid black;
+                border-left: 2px solid black;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                gap: 20px;
+            }
+            .bar {
+                height: 100%;
+                width: 60px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="myChart" class="container">
+            <div id="chartBar" class="graph">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <script src="resizeObserver.js"></script>
+    </body>
+</html>

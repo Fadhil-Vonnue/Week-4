@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .head {
+                container-type: scroll-state;
+                position: sticky;
+                z-index: 100;
+                top: 0;
+                > .header {
+                    @container scroll-state(stuck:top) {
+                        box-shadow: 10px 10px 8px #888888;
+                    }
+                }
+            }
+            .logo {
+                color: white;
+                font-weight: 50px;
+            }
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .animate {
+                animation: fadeIn 1s ease-in;
+            }
+            .header {
+                height: 9vh;
+                background-color: rgb(18, 18, 131);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                box-sizing: border-box;
+                padding: 30px;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav a {
+                color: white;
+                font-family: sans-serif;
+                text-decoration: none;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            nav a:focus-visible {
+                background-color: pink;
+            }
+            nav :hover {
+                color: pink;
+            }
+            .left {
+                display: flex;
+                gap: 20px;
+            }
+            .content {
+                display: flex;
+                align-items: flex-start;
+            }
+            .sidebar {
+                padding: 10px;
+                min-width: 400px;
+                position: sticky;
+                height: 100%;
+                top: 9vh;
+            }
+            .card {
+                width: 95%;
+                padding: 30px;
+                border: 2px solid gray;
+                display: flex;
+                flex-direction: column;
+            }
+            .card header h3 {
+                height: 60px;
+                font-size: 50px;
+            }
+            .card header img {
+                width: 100%;
+                height: 800px;
+            }
+            .card section h3 {
+                font-size: 40px;
+                padding: 5px 0px;
+                margin: 5px 0px;
+            }
+            .card section p {
+                font-size: 20px;
+                padding: 10px 0;
+                margin: 5px 0;
+            }
+            #about {
+                padding: 5px 40px;
+                box-sizing: border-box;
+            }
+            #about p {
+                font-size: 25px;
+            }
+            #about h2 {
+                text-align: center;
+                font-size: 40px;
+                margin: 5px 0;
+            }
+            #contact {
+                padding: 5px 40px;
+                box-sizing: border-box;
+            }
+            #contact p {
+                font-size: 25px;
+            }
+            #contact h2 {
+                text-align: center;
+                font-size: 40px;
+                margin: 5px 0;
+            }
+            .card footer {
+                font-size: 20px;
+                padding: 10px 0px;
+                margin: 5px 0px;
+            }
+            .foot {
+                text-align: center;
+            }
+            .blogss {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            @media screen and (width<=768px) {
+                .content {
+                    flex-direction: column;
+                    order: -1;
+                }
+                .sidebar {
+                    position: static;
+                    order: 2;
+                }
+            }
+            .blogss h2 {
+                text-align: center;
+            }
+            .card {
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            }
+            .allcomments {
+                margin: 10px 0;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .post {
+                display: flex;
+                gap: 10px;
+            }
+            .comment {
+                padding: 5px 10px;
+                border: 1px solid black;
+            }
+            .comments {
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 10px;
+            }
+            .allcomments button {
+                padding: 5px 10px;
+            }
+            .post input {
+                padding: 5px 10px;
+                width: 100%;
+            }
+            .liked {
+                fill: black;
+            }
+            .hide {
+                display: none;
+            }
+            .overlayToast {
+                height: 270px;
+                width: 380px;
+                position: fixed;
+                top: 380px;
+                left: 10px;
+                z-index: 300;
+                white-space: pre-line;
+                overflow: auto;
+                border: 1px solid black;
+                padding: 10px;
+                background-color: white;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <header class="head">
+            <div class="header">
+                <div class="left">
+                    <div class="logo">
+                        <h1><u>Today's Times</u></h1>
+                        <span>Everyday! EveryNews!</span>
+                    </div>
+                </div>
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact Links</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <article id="blog">
+                <div class="content">
+                    <aside class="sidebar">
+                        <section>
+                            <h2>Latest Posts</h2>
+                            <a href="#conspiracy"
+                                >Aliens and UFO- A Bible Perspective</a
+                            >
+                            <br /><br />
+                            <a href="#tech">
+                                Why Humans are still more COst-Effective than AI
+                                Computers
+                            </a>
+                            <br /><br />
+                            <a href="#spoerts">
+                                World Cup 2026: What you need to know about all
+                                48 teams </a
+                            ><br /><br />
+                        </section>
+                        <hr />
+                        <section>
+                            <h2>Categories</h2>
+                            <a href="#conspiracy">Conspiracy</a><br /><br />
+                            <a href="#tech">Ai & Tech</a><br /><br />
+                            <a href="#sports">Sports</a><br /><br />
+                        </section>
+                    </aside>
+                    <div class="blogss">
+                        <h2>Blog!</h2>
+                        <hr />
+                        <article class="card" id="conspiracy">
+                            <header>
+                                <h3>Aliens and UFO- A Bible Perspective</h3>
+                                <img
+                                    src="https://picsum.photos/id/1/400/300"
+                                    alt="UFO alllegedly Spotted at Area 51"
+                                />
+                                <br />
+                                <time datetime="2026-06-01">June 1,2026</time>
+                            </header>
+                            <section>
+                                <h3>
+                                    More mainstream voices are saying that
+                                    aliens interact with human beings. What does
+                                    the Scripture say?
+                                </h3>
+                                <p>
+                                    The first verse of the bible details the
+                                    creation of the universe and its relation
+                                    ship with the creation of Earth: "In the
+                                    beginning God created the heaven and the
+                                    earth."
+                                </p>
+                                <p>
+                                    Notice: God created the entirety of the
+                                    universe in the same general period of time.
+                                    But the Earth is singled out as special.“And
+                                    God said, Let us make man in our image,
+                                    after our likeness: and let them have
+                                    dominion over the fish of the sea, and over
+                                    the fowl of the air, and over the cattle,
+                                    and over all the earth, and over every
+                                    creeping thing that creepeth upon the earth.
+                                    So God created man in his own image, in the
+                                    image of God created he him; male and female
+                                    created he them” (Genesis 1:26-27).God made
+                                    Earth the domain of man. Man is a special
+                                    creation, made in God’s image. God stresses
+                                    this three times in two verses. God sees man
+                                    as so special that He gave man rule over
+                                    every other physical creature on this
+                                    planet.
+                                </p>
+                            </section>
+                            <footer>
+                                <span>- John Doe</span>
+                                <a href="#category">Conspiray</a>
+                            </footer>
+                            <hr />
+                            <div class="allcomments">
+                                <div class="comments"></div>
+                                <div class="post">
+                                    <input
+                                        type="text"
+                                        placeholder="Add a comment"
+                                    />
+                                    <button class="post-but">Post</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card" id="tech">
+                            <header>
+                                <h3>
+                                    Why Humans are still more cost-effective
+                                    than AI Computers
+                                </h3>
+                                <img
+                                    src="https://picsum.photos/id/39/400/300"
+                                    alt="UFO alllegedly Spotted at Area 51"
+                                />
+                                <br />
+                                <time datetime="2026-06-02">June 2,2026</time>
+                            </header>
+                            <section>
+                                <h3>
+                                    That assumption is starting to break down.
+                                    The idea that machines would be cheaper and
+                                    more efficient than humans has long shaped
+                                    expectations about automation.
+                                </h3>
+                                <p>
+                                    Training a large model to handle nuanced
+                                    tasks can cost more than hiring a human to
+                                    do the same work.For many tasks, human labor
+                                    remains the more cost-effective option.
+                                </p>
+                                <p>
+                                    We’ve reached a point where the cost of
+                                    compute can exceed the cost of human labor.
+                                    AI infrastructure requires significant power
+                                    and cooling, driving up operating costs.
+                                </p>
+                                <p>
+                                    The reality is that humans are extremely
+                                    energy-efficient. We run on about 2000
+                                    calories per day, roughly the energy
+                                    equivalent of a dim lightbulb. To get an AI
+                                    to perform real-time, complex reasoning at a
+                                    human level, you need megawatts.
+                                </p>
+                                <p>
+                                    Industry analyses suggest that replacing a
+                                    $60,000-a-year analyst with a fully
+                                    integrated AI system can produce an ROI that
+                                    looks more like a “return on insanity.”
+                                </p>
+                            </section>
+                            <footer>
+                                <span>- John Snow, </span>
+                                <a href="#category">Ai & Tech</a>
+                            </footer>
+                            <hr />
+                            <div class="allcomments">
+                                <div class="comments"></div>
+                                <div class="post">
+                                    <input
+                                        type="text"
+                                        placeholder="Add a comment"
+                                    />
+                                    <button class="post-but">Post</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="card" id="sports">
+                            <header>
+                                <h3>
+                                    World Cup 2026: What you need to know about
+                                    all 48 teams
+                                </h3>
+                                <img
+                                    src="https://picsum.photos/id/59/400/300"
+                                    alt="UFO alllegedly Spotted at Area 51"
+                                />
+                                <br />
+                                <time datetime="2026-06-03">June 3,2026</time>
+                            </header>
+                            <section>
+                                <h3>
+                                    Will Lionel Messi lead Argentina to retain
+                                    the trophy they won in Qatar in 2022 and
+                                    cement his claim to GOAT status? Or will
+                                    Cristiano Ronaldo -- who, like his longtime
+                                    rival, is set to appear at a record sixth
+                                    World Cup -- lift the trophy for Portugal?
+                                </h3>
+                                <p>
+                                    This is the first worldcup to feature 48
+                                    teams, meaning there are plenty of facts and
+                                    information that even the most ardent soccer
+                                    fan will need to learn before the big
+                                    kickoff on June 11
+                                </p>
+                                <p>
+                                    What about the other star-studded teams that
+                                    have genuine ambitions to be the last one
+                                    standing after the final on July 19? Can
+                                    Spain and boy wonder Lamine Yamal add the
+                                    World Cup to their 2024 European
+                                    Championship crown? Two-time winners France
+                                    were runners-up four years ago despite
+                                    Kylian Mbappé scoring three goals in the
+                                    final; could it be their year again? What
+                                    about Harry Kane's England? Or Vinícius
+                                    Júnior's Brazil? And can you ever really
+                                    discount Germany from the running?
+                                </p>
+                                <p>
+                                    The three host nations -- Canada, Mexico and
+                                    the United States -- will all bring
+                                    something different to the party, but which
+                                    of their teams will go the furthest? And
+                                    what will the four World Cup debutants --
+                                    Cape Verde, Curaçao, Jordan and Uzbekistan
+                                    -- do to make their mark?
+                                </p>
+                            </section>
+                            <footer>
+                                <span>- Walter White, </span>
+                                <a href="#category">Sports</a>
+                            </footer>
+                            <hr />
+                            <div class="allcomments">
+                                <div class="comments"></div>
+                                <div class="post">
+                                    <input
+                                        type="text"
+                                        placeholder="Add a comment"
+                                    />
+                                    <button class="post-but">Post</button>
+                                </div>
+                            </div>
+                        </article>
+                        <hr />
+                    </div>
+                </div>
+            </article>
+            <hr />
+            <article id="about">
+                <h2>About</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolorem illum quaerat ad suscipit perspiciatis. Nesciunt
+                    sequi suscipit vitae incidunt numquam! Today's Times is
+                    dedicated to helping people understand and engage with the
+                    world through on-the-ground, expert and deeply reported
+                    independent journalism.
+                </p>
+                <p>
+                    Our mission is to seek the truth and help people understand
+                    the world. This mission is rooted in our belief that great
+                    journalism has the power to make each reader’s life richer
+                    and more fulfilling, and all of society stronger and more
+                    just.
+                </p>
+            </article>
+            <hr />
+            <article id="contact">
+                <h2>Contact Links</h2>
+                <ul>
+                    <li>
+                        For Booking
+                        <a href="mailto:booking@Todaytimes.com"
+                            >booking@Todaytimes.com</a
+                        >
+                    </li>
+                    <li>For Contact - +91 9526123456</li>
+                </ul>
+            </article>
+            <hr />
+        </main>
+        <div class="overlayToast"></div>
+        <script src="blog.js"></script>
+        <script src="intersection.js"></script>
+    </body>
+</html>
