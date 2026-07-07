@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            :root {
+                --primary-color: #faf2c8;
+                --secondary-color: #f2308e;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .cards {
+                display: flex;
+                flex-direction: column;
+                /* gap: 20px; */
+                height: 100%;
+                box-sizing: border-box;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .card {
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                padding: 20px;
+                /* border: 2px solid black; */
+                justify-content: center;
+                align-items: center;
+            }
+            header {
+                height: 60px;
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: sticky;
+                top: 0;
+            }
+            h1 {
+                font-family:
+                    Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+                font-weight: 900;
+            }
+            .scroller {
+                height: 100vh;
+                overflow-y: auto;
+                position: relative;
+            }
+            [data-section] {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: calc(100vh);
+                padding: 20px;
+                border: 2px solid black;
+                width: 100%;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="scroller">
+            <header>
+                <h1></h1>
+            </header>
+            <main>
+                <div class="cards">
+                    <section data-section>
+                        <h2>HOME</h2>
+                        <div class="card">
+                            <img
+                                data-src="https://picsum.photos/id/35/500/300"
+                                alt=""
+                            />
+                        </div>
+                    </section>
+                    <section data-section>
+                        <h2>FLOWERS</h2>
+                        <div class="card">
+                            <img
+                                data-src="https://picsum.photos/id/35/500/300"
+                                alt=""
+                            />
+                        </div>
+                    </section>
+                    <section data-section>
+                        <h2>CARS</h2>
+                        <div class="card">
+                            <img
+                                data-src="https://picsum.photos/id/35/500/300"
+                                alt=""
+                            />
+                        </div>
+                    </section>
+                    <section data-section data-counter>
+                        <h2>STATS</h2>
+                        <div class="card">
+                            <h3 id="counter" data-id="250">0</h3>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <script src="intersectionObserver.js"></script>
+    </body>
+</html>
