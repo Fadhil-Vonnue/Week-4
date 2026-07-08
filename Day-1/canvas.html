@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .tooltip {
+                position: absolute;
+            }
+            .canvascontainer {
+                position: relative;
+            }
+            main {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="canvascontainer">
+                <canvas
+                    id="chart"
+                    width="500"
+                    height="500"
+                    style="
+                        border: 1px solid;
+                        padding: 20px;
+                        box-sizing: border-box;
+                    "
+                ></canvas>
+                <div class="tooltip"></div>
+            </div>
+            <button onclick="downloadChart()">
+                <a href="">Export Chart</a>
+            </button>
+        </main>
+        <script src="canvas.js"></script>
+    </body>
+</html>
