@@ -16,7 +16,6 @@ form.addEventListener("submit", (e) => {
     if ((!"Notification") in window) {
         alert("NOTIFICATION NOT SUPPORTED");
     } else if (Notification.permission === "granted") {
-        console.log("HEYYE");
         const notif = new Notification("Form sent successfully");
     } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then((permission) => {
@@ -33,15 +32,12 @@ function success(location) {
         document.querySelector("#location").value = data.city;
     });
 }
-function err(msg) {}
-navigator.permissions.query({ name: "geolocation" }).then((result) => {
-    if (result.state === "granted") {
-        navigator.geolocation.getCurrentPosition(success, err);
-    } else if (result.state === "denied") {
-        alert("please share location to autofill location");
-        navigator.geolocation.getCurrentPosition(success, err);
-    }
-});
+function err(msg) {
+    alert("please share location to autofill location");
+}
+
+navigator.geolocation.getCurrentPosition(success, err);
+
 async function getCityName(lat, lon) {
     const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`;
     try {
