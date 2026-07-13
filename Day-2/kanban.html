@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            main {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                padding: 20px;
+            }
+            .kanban {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                width: 30%;
+                border: 4px solid black;
+            }
+            .todo h2 {
+                background-color: red;
+            }
+            .progress h2 {
+                background-color: yellow;
+            }
+            .done h2 {
+                background-color: green;
+            }
+            .tasks,
+            .tasks1 {
+                padding: 20px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .task {
+                border: 1px solid black;
+                padding: 5px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .selected {
+                background-color: lightblue;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <div class="todo kanban">
+                <h2>To-Do</h2>
+                <div id="todo" class="tasks todo-tasks"></div>
+                <div class="input">
+                    <label for="todo">Add a task</label>
+                    <input id="todoinput" name="todo" type="text" />
+                    <button class="addCard">Add</button>
+                </div>
+            </div>
+            <div class="progress kanban">
+                <h2>Progress</h2>
+                <div id="progress" class="tasks progress-tasks"></div>
+                <div class="input">
+                    <label for="todo">Add a task</label>
+                    <input id="todo" name="todo" type="text" />
+                    <button class="addCard">Add task</button>
+                </div>
+            </div>
+            <div class="done kanban">
+                <h2>Done</h2>
+                <div id="done" class="tasks done-tasks"></div>
+                <div class="input">
+                    <label for="todo">Add a task</label>
+                    <input id="todo" name="todo" type="text" />
+                    <button class="addCard">Add task</button>
+                </div>
+            </div>
+        </main>
+        <script src="kanban.js" type="module"></script>
+    </body>
+</html>
