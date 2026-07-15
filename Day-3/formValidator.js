@@ -8,35 +8,21 @@ const rules = {
         },
     ],
     email: [{ rule: "required" }, { rule: "email" }],
+    phone: [{ rule: "pattern", regex: /[0-9]{10}/ }],
+    msg: [{ rule: "required" }, { rule: "minLength", minLength: 20 }],
+    password: [
+        { rule: "required" },
+        { rule: "minLength", minLength: 8 },
+        { rule: "maxLength", maxLength: 12 },
+    ],
 };
 class FormValidator {
     constructor(form, rules) {
         this.form = form;
         this.rules = rules;
-        // this.init();
     }
-    // init() {
-    //     // this.form.addEventListener("submit",(e)=>{
-    //     //     this.validateAll()
-    //     // })
-    //     this.form.addEventListener(
-    //         "blur",
-    //         (e) => {
-    //             if (e.target.tagName === "INPUT") {
-    //                 console.log(
-    //                     "Input left:",
-    //                     event.target.name,
-    //                     event.target.value
-    //                 );
-    //                 this.validate(e.target);
-    //             }
-    //         },
-    //         true
-    //     );
-    // }
     validateAll() {
         Object.keys(this.rules).forEach((key, index) => {
-            console.log(this.form.elements[key]);
             this.validate(this.form.elements[key]);
         });
     }
@@ -47,8 +33,6 @@ class FormValidator {
                 switch (rule.rule) {
                     case "required":
                         if (field.value.trim() == "") {
-                            //   alert(`${field.name} is required`);
-                            console.log(field.name, "is required");
                             field.nextElementSibling.textContent = `${field.name} is required`;
                             flag = 1;
                             break;
@@ -58,7 +42,9 @@ class FormValidator {
                             rule.minLength > field.value.length &&
                             field.value
                         ) {
-                            //   alert(`${field.name} has a minlength of ${rule.minLength}`);
+                            console.log(
+                                `${field.name} has a minlength of ${rule.minLength}`
+                            );
                             field.nextElementSibling.textContent = `${field.name} has a minlength of ${rule.minLength}`;
                             flag = 1;
                             break;
@@ -66,7 +52,9 @@ class FormValidator {
 
                     case "maxLength":
                         if (rule.maxLength < field.value.length) {
-                            //   alert(`${field.name} has a maxlength of ${rule.maxLength}`);
+                            console.log(
+                                `${field.name} has a maxlength of ${rule.maxLength}`
+                            );
                             field.nextElementSibling.textContent = `${field.name} has a maxlength of ${rule.maxLength}`;
                             flag = 1;
                             break;
@@ -75,7 +63,9 @@ class FormValidator {
                         if (rule.regex.test(field.value)) {
                             break;
                         } else {
-                            //   alert(`${field.name} doesnt follow the pattern`);
+                            console.log(
+                                `${field.name} doesnt follow the pattern`
+                            );
                             field.nextElementSibling.textContent = `${field.name} doesnt follow the pattern`;
                             flag = 1;
                             break;
@@ -88,7 +78,9 @@ class FormValidator {
                         ) {
                             break;
                         } else {
-                            //   alert(`${field.name} doesnt follow the pattern example@mail.com`);
+                            console.log(
+                                `${field.name} doesnt follow the pattern example@mail.com`
+                            );
                             field.nextElementSibling.textContent = `${field.name} doesnt follow the pattern example@mail.com`;
                             flag = 1;
                             break;
@@ -101,14 +93,16 @@ class FormValidator {
                         ) {
                             break;
                         } else {
-                            //   alert(`${field.name} is not same as ${rule.otherField}`);
+                            console.log(
+                                `${field.name} is not same as ${rule.otherField}`
+                            );
                             field.nextElementSibling.textContent = `${field.name} is not same as ${rule.otherField}`;
                             flag = 1;
                             break;
                         }
                     case "custom":
                         if (rule.fn(field.value)) {
-                            //   alert("not an admin");
+                            console.log("not an admin");
                             field.nextElementSibling.textContent =
                                 field.nextElementSibling.textContent +
                                 "not an admin";
@@ -127,10 +121,5 @@ class FormValidator {
         }
     }
 }
-// const form = document.querySelector("form");
-// const newform = new FormValidator(form, rules);
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     newform.validateAll();
-// });
+
 module.exports = { FormValidator, rules };

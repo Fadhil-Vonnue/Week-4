@@ -16,10 +16,6 @@ function openHam(button, content) {
     }
 }
 
-function openHam1(e) {
-    openHam(e.currentTarget, document.querySelector(".drawer"));
-}
-
 const drawer = document.querySelector(".drawer");
 
 function trapFocus(element) {
