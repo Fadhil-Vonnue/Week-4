@@ -10,14 +10,45 @@ describe("FORM VALIDATOR", () => {
           <label for="usernameId">Enter Username *</label>
           <input type="text" name="username" id="usernameId" /><span style="color:red;" class="field-error"></span><br /><br />
           <label for="emailId">Enter Email *</label>
-          <input type="email" id="emailId" name="email"/><span style="color:red;" class="field-error"></span><br /><br />    </form>`;
+          <input type="email" id="emailId" value="hi@co" name="email"/><span style="color:red;" class="field-error"></span><br /><br /> 
+           <input
+                        type="tel"
+                        placeholder=" "
+                        name="phone"
+                        id="tel-id"
+                    />
+                    <label for="tel-id">Enter Phone No *</label>
+                    <textarea id="msg" placeholder=" " name="msg"></textarea
+                    >
+                    <label for="msg">Tell us:</label>
+                    <input type="password" id="passId" name="password"/><span style="color:red;" class="field-error"></span><br /><br />
+            <label for="passId">Enter Password *</label>
+          </form>`;
     const form = document.querySelector("form");
-    test("FORM", () => {
+    const nameId = document.querySelector("#nameId");
+    const passs = document.querySelector("#passId");
+    const messages = document.querySelector("#msg");
+    const tele = document.querySelector("#tel-id");
+    const mails = document.querySelector("#emailId");
+    const username = document.querySelector("#usernameId");
+    nameId.value = "f";
+    test("FORM INVALID", () => {
+        passs.value = "jfjfdhskjdsfkjshdfkjsjfks";
         const newform = new FormValidator(form, rules);
-        console.log(newform);
+        newform.validateAll();
+    });
+    test("FORM VALID", () => {
+        nameId.value = "jameslacro";
+        passs.value = "hsdhah123";
+        messages.value = `jdsvjhkjhdvsjlhkjsdvkjkjvhAKjhaskhvdkjhkjsvdhkjhasjkvjkvsdksfafas`;
+        tele.value = 123456789;
+        mails.value = "example@gmail.com";
+        username.value = "admin";
+        const newform = new FormValidator(form, rules);
         newform.validateAll();
     });
 });
+
 describe("test accordion", () => {
     document.body.innerHTML = `
             <main>
@@ -28,12 +59,16 @@ describe("test accordion", () => {
     const panel = document.querySelector(".panel");
     accordion(header, panel);
     header.click();
-    console.log(document.body.innerHTML);
     test("aria-expanded to true", () => {
         expect(panel.ariaExpanded).toBe("true");
     });
     test("panel become visible (max-height not zero)", () => {
         expect(panel.style.maxHeight).not.toBe("0px");
+    });
+
+    test("aria-expanded to false", () => {
+        header.click();
+        expect(panel.ariaExpanded).toBe("false");
     });
 });
 
@@ -64,6 +99,13 @@ describe("test nav", () => {
         await user.tab();
         await user.tab();
         await user.tab();
+        expect(links[0]).toHaveFocus();
+    });
+    test("focus is trapped reverse", async () => {
+        links[0].focus();
+        await user.tab({ shift: true });
+        await user.tab({ shift: true });
+        await user.tab({ shift: true });
         expect(links[0]).toHaveFocus();
     });
 });
