@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Virtual Scroll</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                position: relative;
+                overflow-y: auto;
+                height: 500px;
+                border: 1px solid black;
+            }
+
+            .spacer {
+                width: 100%;
+            }
+
+            .content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .card {
+                border: 2px solid;
+                height: 170px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="extra"></div>
+            <div class="content"></div>
+        </div>
+
+        <script src="scroll.js"></script>
+    </body>
+</html>
