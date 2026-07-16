@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            as="style"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="preload"
+            href="css/main.css"
+            as="style"
+            onload="
+                this.onload = null;
+                this.rel = 'stylesheet';
+            "
+        />
+        <noscript><link rel="stylesheet" href="css/main.css" /></noscript>
+        <title>PressWire</title>
+    </head>
+    <body>
+        <header>
+            <div class="nav">
+                <div class="flex">
+                    <button class="hamb">
+                        <img src="hamburger.webp" alt="hamburger-button" />
+                    </button>
+
+                    <div class="flexbox">
+                        <img
+                            style="filter: invert(1)"
+                            width="200"
+                            src="press-removebg-preview.webp"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <h1>SERVICES</h1>
+                <button id="dark" aria-label="dark-mode-toggle">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                        xml:space="preserve"
+                    >
+                        <g
+                            style="
+                                stroke: none;
+                                stroke-width: 0;
+                                stroke-dasharray: none;
+                                stroke-linecap: butt;
+                                stroke-linejoin: miter;
+                                stroke-miterlimit: 10;
+                                fill: none;
+                                fill-rule: nonzero;
+                                opacity: 1;
+                            "
+                            transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+                        >
+                            <path
+                                d="M 87.823 60.7 c -0.463 -0.423 -1.142 -0.506 -1.695 -0.214 c -15.834 8.398 -35.266 2.812 -44.232 -12.718 c -8.966 -15.53 -4.09 -35.149 11.101 -44.665 c 0.531 -0.332 0.796 -0.963 0.661 -1.574 c -0.134 -0.612 -0.638 -1.074 -1.259 -1.153 c -9.843 -1.265 -19.59 0.692 -28.193 5.66 C 13.8 12.041 6.356 21.743 3.246 33.35 S 1.732 57.08 7.741 67.487 c 6.008 10.407 15.709 17.851 27.316 20.961 C 38.933 89.486 42.866 90 46.774 90 c 7.795 0 15.489 -2.044 22.42 -6.046 c 8.601 -4.966 15.171 -12.43 18.997 -21.586 C 88.433 61.79 88.285 61.123 87.823 60.7 z"
+                                style="
+                                    stroke: none;
+                                    stroke-width: 1;
+                                    stroke-dasharray: none;
+                                    stroke-linecap: butt;
+                                    stroke-linejoin: miter;
+                                    stroke-miterlimit: 10;
+                                    fill: rgb(0, 0, 0);
+                                    fill-rule: nonzero;
+                                    opacity: 1;
+                                "
+                                transform=" matrix(1 0 0 1 0 0) "
+                                stroke-linecap="round"
+                            />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+            <div class="drawer">
+                <a href="./home.html">Home</a>
+                <a aria-current="page" href="#">Services</a>
+                <a href="./team.html">Team</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </header>
+        <main class="servicepage">
+            <div class="searchbar">
+                <label for="searchCard">Search for Services</label>
+                <input onclick="debounce()" type="search" id="searchCard" />
+                <button onclick="findCards1()">Search</button>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <h2>Media Contact Database</h2>
+                    <p>
+                        Access a global, carefully-maintained database of
+                        journalists, editors, publications and media outlets.
+                        The Media Contact Database is used to research
+                        journalists, build targeted press lists and support
+                        accurate outreach at global, regional, national or
+                        continent-wide level.
+                    </p>
+                </article>
+                <article class="card">
+                    <h2>Press Rekease Distribution</h2>
+                    <p>
+                        Deliver press releases directly to journalists and
+                        newsroom systems worldwide using targeted delivery and
+                        editorial review. Press Release Distribution supports
+                        global campaigns, geographic and language-specific
+                        targeting, multilingual distribution and detailed
+                        tracking and reporting
+                    </p>
+                    <p>To know more <a href="tel:+95264567890">Call Us</a></p>
+                </article>
+                <article class="card">
+                    <h2>Online Syndication</h2>
+                    <p>
+                        Publish press releases across a global network of
+                        established news and information websites. Online
+                        Syndication supports long-term visibility, public access
+                        and search discovery and operates independently from
+                        direct journalist delivery.
+                    </p>
+                </article>
+                <article class="card skeletonPlaceholder"></article>
+                <article class="card skeletonPlaceholder"></article>
+                <article class="card skeletonPlaceholder"></article>
+                <div class="noresult">OOPS !! NO RESULTS FOUND!</div>
+            </div>
+            <article class="article">
+                <h2>Features</h2>
+                <ul>
+                    <li>Research & Target</li>
+                    <li>Distribute</li>
+                    <li>Publish Online</li>
+                    <li>Monitor</li>
+                </ul>
+            </article>
+            <article>
+                <h2>Subscriptions</h2>
+                <div class="subs">
+                    <table>
+                        <caption>
+                            Pricing Comparison Table for the Service
+                        </caption>
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col span="2" class="affordable" />
+                            <col class="featured" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="2"></th>
+                                <th colspan="3">Plans</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Category</th>
+                                <th>Features</th>
+                                <th>Basic</th>
+                                <th>Pro</th>
+                                <th>Corporate</th>
+                            </tr>
+                            <tr>
+                                <th rowspan="4">Press Release Distribution</th>
+                                <th>Number of Press Releases</th>
+                                <td>1</td>
+                                <td>5 + 2 for free JUNE SPECIAL</td>
+                                <td>15 + 5 for free JUNE SPECIAL</td>
+                            </tr>
+                            <tr>
+                                <th>Number of Country Targets</th>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Ingested by prominent AI and LLM
+                                    infrastructures
+                                </th>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Distributed to U.S. TV/Radio Based on
+                                    Relevance
+                                </th>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="4">Press Release Features</th>
+                                <th>Word Limit</th>
+                                <td>700</td>
+                                <td>1000</td>
+                                <td>2500</td>
+                            </tr>
+                            <tr>
+                                <th>Ad-free Press Release</th>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th>Search Optimized Title & Meta Tags</th>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th>Detailed Distribution Reports</th>
+                                <td>No</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">Press Release Pricing</th>
+                                <th>Package Price</th>
+                                <td>$149</td>
+                                <td>$499</td>
+                                <td>$999</td>
+                            </tr>
+                            <tr>
+                                <th>Number of Press Releases</th>
+                                <td>1</td>
+                                <td>5 + 2 for free JUNE SPECIAL</td>
+                                <td>15 + 5 for free JUNE SPECIAL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>FREQUENTLY ASKED QUESTIONS</h2>
+                <div class="FAQS">
+                    <div class="FAQ">
+                        <span><b>What payment methods do you accept?</b></span>
+                        <button class="accordion-but">&gt;</button>
+                        <div class="accordionContent">
+                            We accept all major credit cards, PayPal, and Apple
+                            Pay.
+                        </div>
+                    </div>
+                    <div class="FAQ">
+                        <span><b>Do I need an account to order?</b> </span>
+                        <button class="accordion-but">&gt;</button>
+                        <div class="accordionContent">
+                            No, you can check out as a guest.
+                        </div>
+                    </div>
+                    <div class="FAQ">
+                        <span><b>How can I contact customer service? </b></span>
+                        <button class="accordion-but">&gt;</button>
+                        <div class="accordionContent">
+                            Email us at support@example.com or use our live chat
+                        </div>
+                    </div>
+                    <div class="FAQ">
+                        <span><b>Is my payment secure?</b> </span>
+                        <button class="accordion-but">&gt;</button>
+                        <div class="accordionContent">
+                            Yes, our checkout uses SSL encryption to protect
+                            your data.
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <section class="cta">
+                <h2>Ready to Scale Your Business</h2>
+                <p>
+                    Join over 10,000+ professionals who get our weekly growth
+                    strategies delivered straight to their inbox
+                </p>
+                <button class="enroll">Subscribe Now!</button>
+            </section>
+        </main>
+        <footer>
+            <div class="footer">
+                <div class="content">
+                    <h2>Presswire!</h2>
+                    <span
+                        >Your trusted Public Relations and communications
+                        Partner</span
+                    >
+                    <div class="socials">
+                        <button aria-label="" Instagram>
+                            <img
+                                width="30"
+                                height="30"
+                                height="30px"
+                                src="icons8-instagram-48.png"
+                                alt="Instagram"
+                            />
+                        </button>
+                        <button aria-label="Twitter">
+                            <img
+                                width="30"
+                                height="30"
+                                src="icons8-twitter-48.png"
+                                alt="twitter"
+                            />
+                        </button>
+                        <button aria-label="facebook">
+                            <img
+                                width="30"
+                                height="30"
+                                height="30px"
+                                src="icons8-facebook-48.png"
+                                alt="facebook"
+                            />
+                        </button>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Navigate</h3>
+                    <a href="./home.html">Home</a>
+                    <a aria-current="page" href="#">Services</a>
+                    <a href="./team.html">Team</a>
+                    <a href="about.html">About</a>
+                </div>
+                <div class="content">
+                    <h3>Company Info</h3>
+                    <a href="">About Us</a>
+                    <a href="">Core Team</a>
+                </div>
+                <div class="content">
+                    <h3>Contact</h3>
+                    <a href="">About Us</a>
+                    <a href="">Core Team</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2018 – 2022 Presswire | All Rights Reserved
+            </div>
+        </footer>
+        <div class="backtop">Back to top</div>
+        <script src="main.js" type="module" defer></script>
+    </body>
+</html>

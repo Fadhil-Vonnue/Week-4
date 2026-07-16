@@ -1,0 +1,88 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+header {
+    padding: 10px;
+    background-color: navy;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+    /* height: 96px; */
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+header a {
+    color: white;
+}
+
+main {
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 76px - 30vh);
+}
+
+.hero {
+    width: 100%;
+    background-image:
+        linear-gradient(
+            rgb(0 0 0 / 40%) 0%,
+            rgb(0 0 0 / 50%),
+            rgb(0 0 0 / 70%),
+            rgb(0 0 0 / 90%),
+            rgb(0 0 0 / 100%) 100%
+        ),
+        url("../600.webp");
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.homegrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+footer {
+    font-family: sans-serif;
+    margin-top: auto;
+    min-height: 20vh;
+    width: 100%;
+    background-color: rgb(32 38 62);
+    box-sizing: border-box;
+    padding: 0 15vw;
+    padding-top: 5vh;
+    color: white;
+}
+
+.cards {
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
