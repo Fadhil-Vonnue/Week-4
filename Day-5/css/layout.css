@@ -1,0 +1,45 @@
+@import url(components.css);
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+}
+body {
+    min-height: 100vh;
+    background-color: rgb(1, 4, 10);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3d444d;
+    padding: 10px;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(48px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+main {
+    min-height: calc(100vh - 67px);
+}
+header a {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+.hero {
+    height: 70vh;
+    width: 100%;
+    position: relative;
+}
+footer {
+    padding: 10px;
+}
+.detail-title {
+    font-size: 48px;
+}

@@ -4,13 +4,110 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="/css/layout.css" />
     </head>
     <body>
-        <a id="home" href="">Home</a>
-        <a id="list" href="">List</a>
-        <a id="detail" href="">Detail</a>
-        <a id="settings" href="">Settings</a>
-        <main></main>
-        <script src="main.js" type="module"></script>
+        <header>
+            <div class="navLeft">
+                <a id="home" href="">Home</a>
+                <a id="list" href="">List</a>
+                <a id="detail" href="">Detail</a>
+                <a id="watchlist" href="">Detail</a>
+            </div>
+            <div class="navRight">
+                <a id="settings" href="">
+                    <img src="/assets/settings.svg" alt="" />
+                </a>
+            </div>
+        </header>
+        <main>
+            <!-- <div class="detailPage">
+                <div class="detailed-card">
+                    <div class="detailed-card-img">
+                        <img
+                            src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="modalOverlay">
+                <div class="searchTop">
+                    <div class="searchMovies">
+                        <div class="searchboxtop">
+                            <div class="searchbox">
+                                <form action="">
+                                    <input
+                                        name="movieTitle"
+                                        type="text"
+                                        placeholder="Search"
+                                    />
+                                </form>
+                                <div class="searchResults"></div>
+                            </div>
+                            <button class="searchbutton">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="white"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                >
+                                    <path
+                                        d="M11 2a9 9 0 105.641 16.01.966.966 0 00.152.197l3.5 3.5a1 1 0 101.414-1.414l-3.5-3.5a1 1 0 00-.197-.153A8.96 8.96 0 0020 11a9 9 0 00-9-9Zm0 2a7 7 0 110 14 7 7 0 010-14Z"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </main>
+        <div id="hidden">
+            <div class="detailed-card">
+                <div class="detailed-card-img">
+                    <img
+                        src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+                        alt=""
+                    />
+                </div>
+                <div class="detailed-card-desc">
+                    <h1 class="detail-title">Star Wars: Return of the Jedi</h1>
+                    <hr />
+                    <div class="card-rating">
+                        9.3 &starf; 󠁯
+                        <span>•󠁏󠁏 2,811,614 votes</span>
+                    </div>
+                    <div class="detail-span">Action, Adventure, Sci-Fi</div>
+                    <div class="detail-span">English, Japanese, French</div>
+                    <div class="detail-plot">
+                        A thief who steals corporate secrets through the use of
+                        dream-sharing technology is given the inverse task of
+                        planting an idea into the mind of a CEO, but his tragic
+                        past may doom the project and his team to disaster.
+                    </div>
+                    <div class="fields">
+                        <span>Director</span><span>Christopher Nolan</span>
+                    </div>
+                    <div class="fields">
+                        <span>Actors </span
+                        ><span
+                            >Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot
+                            Page</span
+                        >
+                    </div>
+                    <div class="fields">
+                        <span>Release</span><span>16 Jul 2010</span>
+                    </div>
+                    <div class="fields">
+                        <span>Runtime</span><span>148 min</span>
+                    </div>
+                    <div class="detailed-buttons">
+                        <button>Watch Now</button><button>Favourite</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/main.js" type="module"></script>
     </body>
 </html>
