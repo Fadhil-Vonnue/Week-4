@@ -12,9 +12,7 @@ export async function renderListPage() {
     const cardsElement = document.createElement("div");
     cardsElement.classList.add("cards");
     mainElement.appendChild(documentFragment);
-    // mainElement.prepend(documentFragment);
     const allCards = await parseCSV("../Top_100_Movies.csv");
-    console.log(allCards);
     for (let i = 0; i < allCards.length; i++) {
         const newCard = createCard(allCards[i]);
         cardsElement.appendChild(newCard);

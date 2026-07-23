@@ -22,14 +22,14 @@ const initialState = {
         type: "Add",
     },
 };
-const datas = await JSON.parse(localStorage.getItem("watchList"));
+const datas = await JSON.parse(localStorage.getItem("user"));
 if (datas) {
     initialState.watchList.list = new Set(datas);
 }
-const store = createStore(initialState, reducer);
+export const store = createStore(initialState, reducer);
 const allRoutes = ["/home", "/list", "/detail", "/settings", "/watchlist"];
 const routes = {};
-console.log(routes);
+
 registerPath(routes, "/home", renderHomePage);
 registerPath(routes, "/list", renderListPage);
 registerPath(routes, "/detail", renderDetailPage);
@@ -69,20 +69,10 @@ function init() {
             alert(err);
         }
     }
-    // if (!allRoutes.includes(window.location.pathname)) {
-    //     try {
-    //         const url = `/home`;
-    //         onRouteChange(`/home`, {});
-    //         history.replaceState({}, "", url);
-    //     } catch (err) {
-    //         alert(err);
-    //     }
-    // } else {
-    //     onRouteChange(document.location.pathname, {});
-    // }
 }
 
 export function onRouteChange(path, params) {
+    console.log("RIYET CHANGE KERI");
     store.dispatch({
         type: "ROUTE_CHANGED",
         payload: {
@@ -91,14 +81,8 @@ export function onRouteChange(path, params) {
         },
     });
 }
-// export function onMovieAdded(movieList) {
-//     store.dispatch({
-//         type: "MOVIE_ADDED",
-//         payload: movieList,
-//     });
-// }
+
 export function onMovieAdded(movieId, list) {
-    console.log("HEY ADDED MOVIEE");
     store.dispatch({
         type: "MOVIE_ADDED",
         payload: {
@@ -116,24 +100,21 @@ export function onMovieDelete(movieId) {
         },
     });
 }
-store.subscribe("ROUTE_CHANGED", (state) => {
+store.subscribe("ROUTE_CHANGED", async (state) => {
+    console.log("IN ROUTE CHANGE");
     navigate(routes, state.route.path, state.route.params);
-    isWatchList();
+    await isWatchList();
 });
 store.subscribe("MOVIE_ADDED", (state) => {
+    console.log("START MOVI EADD");
     updateWatchList(state.watchList);
+    console.log("END MOVI EADD");
 });
 
 window.onpopstate = (event) => {
     onRouteChange(document.location.pathname, {});
 };
-function createCard1() {
-    const card = createCard();
-    const cards = document.querySelector(".cards");
-    cards.appendChild(card);
-}
 
-// Title: 'Inception', Year: '2010', imdbID: 'tt1375666', Type: 'movie', Poster: 'https://m.media-amazon.com/images/M/MV5BMjAxMzY3Nj…TcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg'
 window.addEventListener("keydown", (e) => {
     const overlay = document.querySelector(".modalOverlay");
     if (overlay.style.display === "flex")

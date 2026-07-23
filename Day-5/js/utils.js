@@ -2,28 +2,21 @@ export function registerPath(routes, path, component) {
     routes[path] = component;
 }
 
-export function navigate(routes, path, params) {
-    console.log(path, routes, "navi");
+export async function navigate(routes, path, params) {
     let fn = routes[path];
-    console.log(params, "THIS IS PARAMS");
     if (fn) {
         if (params !== undefined && params.length !== 0) {
-            fn(params.imdbID);
+            await fn(params.imdbID);
             return true;
         } else {
-            fn();
+            await fn();
+
             return true;
         }
     } else {
-        console.log("NO");
         return false;
     }
 }
-export function createButton() {}
-
-export function createCard() {}
-
-export function createModal() {}
 
 export async function fetchJSON(url1) {
     const url = ` http://www.omdbapi.com/?apikey=d65b40df&s=${url1}&page=1`;
@@ -63,13 +56,13 @@ export function createStore(initialState, reducer) {
         },
         async dispatch(action) {
             if (state.watchList.list.has(action.payload.id)) {
+
                 showToast({ message: "Already in WatchList" }, 3, "info");
                 return;
             }
             state = reducer(state, action);
-            console.log(state, "THIS IS STATE");
             let allListeners = listeners[action.type];
-            console.log(listeners, "HEY", allListeners);
+
             for (let listener of allListeners) {
                 await listener(state);
             }
