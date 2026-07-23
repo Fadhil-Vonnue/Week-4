@@ -115,14 +115,14 @@ window.onpopstate = (event) => {
     onRouteChange(document.location.pathname, {});
 };
 
-window.addEventListener("keydown", (e) => {
-    const overlay = document.querySelector(".modalOverlay");
-    if (overlay.style.display === "flex")
-        if (e.key === "Escape") {
-            overlay.style.display = "none";
-        }
-    if (e.key === "Enter") {
-        console.log("HEYYUYUHOIH");
-        overlay.querySelector(".searchbutton").click();
-    }
-});
+// window.addEventListener("keydown", (e) => {
+//     const overlay = document.querySelector(".modalOverlay");
+//     if (overlay.style.display === "flex")
+//         if (e.key === "Escape") {
+//             overlay.style.display = "none";
+//         }
+//     if (e.key === "Enter") {
+//         console.log("HEYYUYUHOIH");
+//         overlay.querySelector(".searchbutton").click();
+//     }
+// });

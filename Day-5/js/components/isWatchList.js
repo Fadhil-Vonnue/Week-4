@@ -5,12 +5,11 @@ export async function isWatchList() {
     if (!document.location.pathname.includes("watchlist")) return;
     const datas = await JSON.parse(localStorage.getItem("watchList"));
     if (datas) {
-        document.querySelector(".openModal").classList.add("hidden");
         const spinTop = document.querySelector(".spintop");
         spinTop.classList.toggle("hidden");
         const frag = document.createDocumentFragment();
         for (let element of datas) {
-            const url = `http://www.omdbapi.com/?apikey=d65b40df&i=${element}`;
+            const url = `https://www.omdbapi.com/?apikey=d65b40df&i=${element}`;
             const data = await fetchJSON1(url);
             const card = createCard1({
                 title: data.Title,
@@ -27,5 +26,5 @@ export async function isWatchList() {
         const mainElement = document.querySelector(".cards");
         spinTop.classList.toggle("hidden");
         mainElement.appendChild(frag);
-    } else document.querySelector(".openModal").classList.remove("hidden");
+    }
 }

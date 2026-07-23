@@ -1,6 +1,6 @@
 import { fetchJSON1 } from "../utils.js";
 export async function renderDetailPage(imdbID) {
-    const url = `http://www.omdbapi.com/?apikey=16af0fc7&i=${imdbID}`;
+    const url = `https://www.omdbapi.com/?apikey=16af0fc7&i=${imdbID}`;
     const details = await fetchJSON1(url);
     const documentFragment = document.createDocumentFragment();
     const divElement = document.createElement("div");

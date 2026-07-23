@@ -5,7 +5,7 @@ export async function renderHomePage() {
         let div = document.createElement("div");
         div.classList.add("hero");
         let img = document.createElement("img");
-        img.src = "../../assets/collage.jpg";
+        img.src = "/Week-4/Day-5/assets/collage.jpg";
         let div1 = document.createElement("div");
         div1.classList.add("fade-overlay");
         div.appendChild(img);
@@ -20,7 +20,7 @@ export async function renderHomePage() {
         const cardsElement = document.createElement("div");
         cardsElement.classList.add("cards");
         mainElement.appendChild(div);
-        const allCards = await parseCSV("../Top_100_Movies.csv");
+        const allCards = await parseCSV("/Week-4/Day-5/Top_100_Movies.csv");
         for (let i = 0; i < 6; i++) {
             const newCard = await createCard(allCards[i]);
             cardsElement.appendChild(newCard);

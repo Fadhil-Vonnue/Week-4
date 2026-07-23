@@ -18,7 +18,7 @@ export function createCard(details) {
     cardImg.src = details.image;
     cardImg.addEventListener("error", handleImageError);
     const starSvg = document.createElement("img");
-    starSvg.src = "./assets/star.svg";
+    starSvg.src = "/Week-4/Day-5/assets/star.svg";
     starSvg.style.width = `${12}px`;
     const cardRating = document.createElement("div");
     cardRating.textContent = details.rating;
@@ -41,12 +41,12 @@ export function createCard(details) {
     card.appendChild(cardDesc);
     const newimg = document.createElement("img");
     newimg.classList.add("addToFav-button");
-    newimg.src = "assets/addtofav.svg";
+    newimg.src = "/Week-4/Day-5/assets/addtofav.svg";
     newimg.style.width = "20px";
     newimg.addEventListener("click", (e) => {
         const imbdbID = e.currentTarget.parentElement.dataset.id;
         onMovieAdded(imbdbID);
-        newimg.src = "assets/close.svg";
+        newimg.src = "/Week-4/Day-5/assets/close.svg";
     });
     card.appendChild(newimg);
     function handleImageError() {
@@ -83,7 +83,7 @@ export function createCard1(details) {
     cardImg.src = details.image;
     cardImg.addEventListener("error", handleImageError);
     const starSvg = document.createElement("img");
-    starSvg.src = "./assets/star.svg";
+    starSvg.src = "/Week-4/Day-5/assets/star.svg";
     starSvg.style.width = `${12}px`;
     const cardRating = document.createElement("div");
     cardRating.textContent = details.rating;
@@ -105,7 +105,7 @@ export function createCard1(details) {
     card.appendChild(cardDesc);
     const newimg = document.createElement("img");
     newimg.classList.add("addToFav-button");
-    newimg.src = "assets/close.svg";
+    newimg.src = "/Week-4/Day-5/assets/close.svg";
     newimg.style.width = "20px";
     newimg.addEventListener("click", (e) => {
         onMovieDelete(details.id);
