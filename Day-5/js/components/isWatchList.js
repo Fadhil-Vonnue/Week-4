@@ -5,6 +5,7 @@ export async function isWatchList() {
     if (!document.location.pathname.includes("watchlist")) return;
     const datas = await JSON.parse(localStorage.getItem("watchList"));
     if (datas) {
+        document.querySelector(".openModal").classList.add("hidden");
         const spinTop = document.querySelector(".spintop");
         spinTop.classList.toggle("hidden");
         const frag = document.createDocumentFragment();
@@ -26,5 +27,5 @@ export async function isWatchList() {
         const mainElement = document.querySelector(".cards");
         spinTop.classList.toggle("hidden");
         mainElement.appendChild(frag);
-    }
+    } else document.querySelector(".openModal").classList.remove("hidden");
 }

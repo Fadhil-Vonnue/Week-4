@@ -25,7 +25,6 @@ export function createSearchCard(details) {
         movieList.add(imbdbID);
         onMovieAdded(imbdbID, movieList);
         svg.style.display = "none";
-        // addToList(imbdbID);
         e.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.display =
             "none";
     });

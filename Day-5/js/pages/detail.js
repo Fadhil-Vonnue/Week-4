@@ -1,9 +1,7 @@
 import { fetchJSON1 } from "../utils.js";
 export async function renderDetailPage(imdbID) {
-    console.log(imdbID, "IMDB");
-    const url = `http://www.omdbapi.com/?apikey=d65b40df&i=${imdbID}`;
+    const url = `http://www.omdbapi.com/?apikey=16af0fc7&i=${imdbID}`;
     const details = await fetchJSON1(url);
-    console.log(details);
     const documentFragment = document.createDocumentFragment();
     const divElement = document.createElement("div");
     documentFragment.append(divElement);
@@ -19,7 +17,6 @@ export async function renderDetailPage(imdbID) {
     newCard.querySelector(".detailed-card .card-rating").innerHTML =
         `${details.imdbRating}  &starf; 󠁯
                         <span>•󠁏󠁏 ${details.imdbVotes} votes</span>`;
-
     let cards = newCard.querySelectorAll(".detail-span");
     cards[0].textContent = details.Genre;
     cards[1].textContent = details.Language;

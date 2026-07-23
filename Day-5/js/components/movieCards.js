@@ -45,7 +45,6 @@ export function createCard(details) {
     newimg.style.width = "20px";
     newimg.addEventListener("click", (e) => {
         const imbdbID = e.currentTarget.parentElement.dataset.id;
-        console.log(imbdbID);
         onMovieAdded(imbdbID);
         newimg.src = "assets/close.svg";
     });
@@ -56,9 +55,7 @@ export function createCard(details) {
     }
     card.dataset.id = details.imdbid;
     card.addEventListener("click", (e) => {
-        console.log(e);
-        console.log(e.target.className !== "addToFav-button");
-        if (!e.target.className === "addToFav-button") {
+        if (e.target.className !== "addToFav-button") {
             const url = `/detail/:${details.imdbid}`;
             history.pushState({}, null, url);
             const obj = { imdbID: details.imdbid };
