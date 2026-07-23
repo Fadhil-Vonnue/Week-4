@@ -108,6 +108,7 @@ export function createCard1(details) {
     newimg.src = "/Week-4/Day-5/assets/close.svg";
     newimg.style.width = "20px";
     newimg.addEventListener("click", (e) => {
+        console.log("DELETE");
         onMovieDelete(details.id);
         document
             .querySelector(`.results[data-id=${details.id}]`)

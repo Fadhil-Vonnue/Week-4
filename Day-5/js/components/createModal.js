@@ -54,6 +54,7 @@ export function createModal() {
                     const mainElement =
                         document.querySelector(".searchResults");
                     mainElement.style.display = "flex";
+                    mainElement.innerHTML = ``;
                     data.Search.forEach((el) => {
                         const card1 = createSearchCard(el);
                         mainElement.appendChild(card1);

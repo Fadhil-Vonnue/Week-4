@@ -19,7 +19,7 @@ export async function navigate(routes, path, params) {
 }
 
 export async function fetchJSON(url1) {
-    const url = ` http://www.omdbapi.com/?apikey=d65b40df&s=${url1}&page=1`;
+    const url = ` https://www.omdbapi.com/?apikey=d65b40df&s=${url1}&page=1`;
     const response = await fetch(url);
     const data = response.json();
     return data;
@@ -35,8 +35,10 @@ export function reducer(state, action) {
             return { ...state, route: action.payload };
         case "MOVIE_ADDED":
             const list = state.watchList.list;
+            console.log(list);
             if (action.payload.type === "Add") list.add(action.payload.id);
             else list.delete(action.payload.id);
+            console.log(list);
             const obj = {
                 list,
                 id: action.payload.id,
@@ -55,8 +57,10 @@ export function createStore(initialState, reducer) {
             return state;
         },
         async dispatch(action) {
-            if (state.watchList.list.has(action.payload.id)) {
-
+            if (
+                state.watchList.list.has(action.payload.id) &&
+                action.payload.type == "Add"
+            ) {
                 showToast({ message: "Already in WatchList" }, 3, "info");
                 return;
             }
@@ -126,7 +130,6 @@ function parseLine(line) {
 
     return values;
 }
-const url = ` http://www.omdbapi.com/?apikey=d65b40df&s=gon&page=2`;
 
 export function showToast(err, duration, type = "error") {
     const check = document.querySelector(".toaster");

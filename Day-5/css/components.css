@@ -219,6 +219,9 @@ input[type="text"] {
 .AddButton {
     color: black;
 }
+.openModal {
+    margin: 20px 0;
+}
 .modalOverlay {
     display: none;
     width: 100%;
