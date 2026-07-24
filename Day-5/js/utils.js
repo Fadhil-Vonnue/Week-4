@@ -19,15 +19,23 @@ export async function navigate(routes, path, params) {
 }
 
 export async function fetchJSON(url1) {
+    try{
     const url = ` https://www.omdbapi.com/?apikey=d65b40df&s=${url1}&page=1`;
     const response = await fetch(url);
     const data = response.json();
     return data;
+    }catch(err){
+        console.error(err)
+    }
 }
 export async function fetchJSON1(url) {
+    try{
     const response = await fetch(url);
     const data = response.json();
     return data;
+    }catch(err){
+        console.error(err)
+    }
 }
 export function reducer(state, action) {
     switch (action.type) {
