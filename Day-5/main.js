@@ -22,7 +22,9 @@ const initialState = {
         type: "Add",
     },
 };
-const datas = await JSON.parse(localStorage.getItem("user"));
+
+const datas = await JSON.parse(localStorage.getItem("watchList"));
+console.log(datas);
 if (datas) {
     initialState.watchList.list = new Set(datas);
 }
@@ -52,7 +54,6 @@ function init() {
     let pathname = document.location.pathname;
     let obj = {};
     if (pathname.includes(":")) {
-        console.log("HEYYEYE");
         let pathnames = pathname.split("/");
         pathname = pathnames.slice(0, -1).join("/");
         let imdbId = pathnames[pathnames.length - 1].slice(1);
@@ -72,7 +73,6 @@ function init() {
 }
 
 export function onRouteChange(path, params) {
-    console.log("RIYET CHANGE KERI");
     store.dispatch({
         type: "ROUTE_CHANGED",
         payload: {
@@ -101,14 +101,11 @@ export function onMovieDelete(movieId) {
     });
 }
 store.subscribe("ROUTE_CHANGED", async (state) => {
-    console.log("IN ROUTE CHANGE");
     navigate(routes, state.route.path, state.route.params);
     await isWatchList();
 });
 store.subscribe("MOVIE_ADDED", (state) => {
-    console.log("START MOVI EADD");
     updateWatchList(state.watchList);
-    console.log("END MOVI EADD");
 });
 
 window.onpopstate = (event) => {
@@ -116,13 +113,14 @@ window.onpopstate = (event) => {
 };
 
 window.addEventListener("keydown", (e) => {
-    const overlay = document.querySelector(".modalOverlay");
-    if (overlay.style.display === "flex")
-        if (e.key === "Escape") {
-            overlay.style.display = "none";
+    if (document.location.pathname.includes("watchlist")) {
+        const overlay = document.querySelector(".modalOverlay");
+        if (overlay.style.display === "flex")
+            if (e.key === "Escape") {
+                overlay.style.display = "none";
+            }
+        if (e.key === "Enter") {
+            overlay.querySelector(".searchbutton").click();
         }
-    if (e.key === "Enter") {
-        console.log("HEYYUYUHOIH");
-        overlay.querySelector(".searchbutton").click();
     }
 });

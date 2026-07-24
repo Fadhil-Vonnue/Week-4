@@ -1,13 +1,18 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="/Week-4/Day-5/css/layout.css" />
-    </head>
-    <body>
-        <header>
+import { renderHomePage } from "../js/pages/home.js";
+import { createStore, navigate } from "../js/utils.js";
+import { registerPath } from "../js/utils.js";
+import { onRouteChange } from "../main.js";
+import { renderDetailPage } from "../js/pages/detail.js";
+import { renderListPage } from "../js/pages/list.js";
+import { renderSettingsPage } from "../js/pages/settings.js";
+import { renderWatchListPage } from "../js/pages/watchlist.js";
+import { parseCSV } from "../js/utils.js";
+import { reducer } from "../js/utils.js";
+import { store } from "../main.js";
+const fetch = require("cross-fetch");
+global.fetch = fetch;
+describe("Test state manager", () => {
+    document.body.innerHTML = `        <header>
             <div class="navLeft">
                 <a id="home" href="">Home</a>
                 <a id="list" href="">List</a>
@@ -15,11 +20,13 @@
             </div>
             <div class="navRight">
                 <a id="settings" href="">
-                    <img src="/Week-4/Day-5/assets/settings.svg" alt="" />
+                    <img src="/assets/settings.svg" alt="" />
                 </a>
             </div>
         </header>
-        <main></main>
+        <main>
+      
+        </main>
         <div id="hidden">
             <div class="detailed-card">
                 <div class="detailed-card-img">
@@ -64,7 +71,40 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <script src="/Week-4/Day-5/main.js" type="module"></script>
-    </body>
-</html>
+        </div>`;
+    const initialState = {
+        route: {
+            path: "/home",
+            params: {},
+        },
+        watchList: {
+            list: new Set(),
+            id: "",
+            type: "Add",
+        },
+    };
+    let routes = {};
+    let a = 20;
+    test("test list register", () => {
+        let path = "/watchlist";
+        registerPath(routes, path, renderWatchListPage);
+        expect(routes[path]).toBe(renderWatchListPage);
+    });
+    test("navigate to WatchList without params", async () => {
+        const res = await navigate(routes, "/watchlist");
+        expect(res).toBe(true);
+    });
+    test("test dispatch", async () => {
+        const fn = jest.fn(() => {
+            console.log("HEYY JEST");
+        });
+        store.subscribe("ROUTE_CHANGED", fn);
+        let pathname = "/home";
+        let obj = {};
+        await onRouteChange(pathname, obj);
+        let state = store.getState();
+        expect(state.route.path).toBe("/home");
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        expect(fn).toHaveBeenCalled();
+    }, 9000);
+});

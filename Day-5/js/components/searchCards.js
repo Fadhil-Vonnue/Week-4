@@ -14,7 +14,7 @@ export function createSearchCard(details) {
     card.dataset.id = details.imdbID;
     const burron = document.createElement("button");
     const svg = document.createElement("img");
-    svg.src = "/assets/addtofav.svg";
+    svg.src = "/Week-4/Day-5/assets/addtofav.svg";
     burron.appendChild(svg);
     burron.style.background = "none";
     svg.style.width = "20px";
